@@ -3,24 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Module Documentation - JS Interaction Labs</title>
+    <title>Research Project - Logic Labs</title>
     <link rel="stylesheet" href="system-styles.css">
 </head>
 <body>
-    <header>
-        <h1>Resource Repository: Interactive Data Visualization</h1>
-        <p>Documentation and deployment of modular JavaScript logic frameworks.</p>
+    <header id="main-header">
+        <h1>Resource Repository: JavaScript Logic Frameworks</h1>
+        <p>Documentation for interactive rendering modules.</p>
     </header>
 
-    <div id="intro-text" style="padding: 20px; max-width: 800px; margin: 0 auto; color: #666;">
-        <p>This repository serves as a testing environment for asynchronous JavaScript execution. 
-        Each container below represents a different logic branch (LB) utilizing Canvas API rendering 
-        to test processor latency and input-output responsiveness.</p>
-    </div>
-
     <main id="logic-container">
-        <!-- Modules load here -->
+        <!-- Game cards will load here -->
     </main>
+
+    <!-- THE PLAYER OVERLAY (Hidden by default) -->
+    <div id="player-overlay">
+        <div class="player-controls">
+            <button onclick="closeModule()">✖ Close Module</button>
+            <span id="module-title">Testing Module</span>
+        </div>
+        <iframe id="game-frame" src="" frameborder="0"></iframe>
+    </div>
 
     <script src="app-logic.js"></script>
 </body>
