@@ -1,51 +1,43 @@
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #1a1a2e;
-    color: #ffffff;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    background-color: #f6f8fa; /* Light grey/white */
+    color: #24292e;
     margin: 0;
-    text-align: center;
+    line-height: 1.5;
 }
 
 header {
-    padding: 2rem;
-    background: #16213e;
+    background-color: #24292e; /* Dark professional header */
+    color: white;
+    padding: 20px 50px;
+    border-bottom: 1px solid #e1e4e8;
 }
 
-#game-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+#logic-container {
+    display: flex;
+    flex-wrap: wrap;
     gap: 20px;
     padding: 40px;
-    max-width: 1200px;
-    margin: 0 auto;
+    justify-content: center;
 }
 
-.game-card {
-    background: #0f3460;
-    border-radius: 15px;
-    padding: 20px;
-    transition: transform 0.3s;
-    cursor: pointer;
-    border: 2px solid transparent;
+.data-module-card {
+    background: white;
+    border: 1px solid #d1d5da;
+    border-radius: 6px;
+    width: 280px;
+    padding: 16px;
+    text-align: left;
 }
 
-.game-card:hover {
-    transform: translateY(-10px);
-    border-color: #e94560;
-}
-
-.game-card img {
-    width: 100%;
-    border-radius: 10px;
-    margin-bottom: 10px;
-}
-
-.btn-play {
-    display: inline-block;
-    background-color: #e94560;
+.btn-launch {
+    display: block;
+    background-color: #2ea44f; /* "Success" Green button */
     color: white;
-    padding: 10px 20px;
+    text-align: center;
+    padding: 8px;
     text-decoration: none;
-    border-radius: 5px;
+    border-radius: 6px;
+    font-weight: bold;
     margin-top: 10px;
 }
