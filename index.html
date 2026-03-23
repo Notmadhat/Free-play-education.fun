@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Research Project - Logic Labs</title>
     <link rel="stylesheet" href="system-styles.css">
+    <style>
+        /* This ensures the player is hidden immediately if the CSS file fails to load */
+        #player-overlay { display: none; }
+    </style>
 </head>
 <body>
     <header id="main-header">
@@ -13,10 +17,10 @@
     </header>
 
     <main id="logic-container">
-        <!-- Game cards will load here -->
+        <!-- Game cards will load here via JavaScript -->
     </main>
 
-    <!-- THE PLAYER OVERLAY (Hidden by default) -->
+    <!-- THE PLAYER OVERLAY -->
     <div id="player-overlay">
         <div class="player-controls">
             <button onclick="closeModule()">✖ Close Module</button>
