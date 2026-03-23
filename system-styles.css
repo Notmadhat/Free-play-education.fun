@@ -1,37 +1,73 @@
-/* Existing styles... (keep your header and card styles from before) */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f6f8fa;
+    color: #24292e;
+    margin: 0;
+    text-align: center;
+}
 
-/* The Fullscreen Player */
+header {
+    background-color: #24292e;
+    color: white;
+    padding: 30px;
+    border-bottom: 3px solid #2ea44f;
+}
+
+#logic-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 40px;
+    justify-content: center;
+}
+
+.data-module-card {
+    background: white;
+    border: 1px solid #d1d5da;
+    border-radius: 8px;
+    width: 250px;
+    padding: 15px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.data-module-card img {
+    width: 100%;
+    border-radius: 4px;
+}
+
+.btn-launch {
+    background-color: #2ea44f;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-top: 10px;
+    width: 100%;
+}
+
+/* FULLSCREEN PLAYER */
 #player-overlay {
-    display: none; /* Hidden until clicked */
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     background: #000;
-    z-index: 1000;
+    z-index: 9999;
 }
 
 .player-controls {
     background: #24292e;
     color: white;
-    padding: 10px;
+    padding: 10px 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.player-controls button {
-    background: #d73a49;
-    color: white;
-    border: none;
-    padding: 5px 15px;
-    cursor: pointer;
-    border-radius: 4px;
-}
-
 #game-frame {
     width: 100%;
-    height: calc(100% - 45px); /* Subtracts the height of the control bar */
-    background: white;
+    height: calc(100% - 50px);
 }
