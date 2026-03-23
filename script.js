@@ -1,31 +1,31 @@
-const games = [
+const modules = [
     {
-        title: "2048",
-        image: "https://via.placeholder.com/250x150?text=2048",
-        url: "https://gabrielecirulli.github.io/2048/"
+        label: "Logic Branch 2048",
+        thumb: "https://via.placeholder.com/250x150?text=Module+2048",
+        source: "https://gabrielecirulli.github.io/2048/"
     },
     {
-        title: "Hextris",
-        image: "https://via.placeholder.com/250x150?text=Hextris",
-        url: "https://hextris.io/"
+        label: "Logic Branch HEX",
+        thumb: "https://via.placeholder.com/250x150?text=Module+HEX",
+        source: "https://hextris.io/"
     },
     {
-        title: "Clumsy Bird",
-        image: "https://via.placeholder.com/250x150?text=Clumsy+Bird",
-        url: "https://ellisonleao.github.io/clumsy-bird/"
+        label: "Logic Branch BIRD",
+        thumb: "https://via.placeholder.com/250x150?text=Module+BIRD",
+        source: "https://ellisonleao.github.io/clumsy-bird/"
     }
 ];
 
-const container = document.getElementById('game-container');
+const container = document.getElementById('logic-container');
 
-games.forEach(game => {
+modules.forEach(item => {
     const card = document.createElement('div');
-    card.className = 'game-card';
+    card.className = 'data-module-card';
     
     card.innerHTML = `
-        <img src="${game.image}" alt="${game.title}">
-        <h3>${game.title}</h3>
-        <a href="${game.url}" class="btn-play" target="_blank">Play Now</a>
+        <img src="${item.thumb}" alt="Data Visualization">
+        <h3>${item.label}</h3>
+        <a href="${item.source}" class="btn-launch" target="_blank">Launch Module</a>
     `;
     
     container.appendChild(card);
