@@ -1,54 +1,37 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const modules = [
-        {
-            label: "Logic Branch 2048",
-            thumb: "https://via.placeholder.com/250x150?text=Module+2048",
-            source: "https://gabrielecirulli.github.io/2048/"
-        },
-        {
-            label: "Logic Branch HEX",
-            thumb: "https://via.placeholder.com/250x150?text=Module+HEX",
-            source: "https://hextris.io/"
-        },
-        {
-            label: "Logic Branch BIRD",
-            thumb: "https://via.placeholder.com/250x150?text=Module+BIRD",
-            source: "https://ellisonleao.github.io/clumsy-bird/"
-        }
-    ];
-
-    const container = document.getElementById('logic-container');
-
-    // Create the cards
-    modules.forEach(item => {
-        const card = document.createElement('div');
-        card.className = 'data-module-card';
-        
-        card.innerHTML = `
-            <img src="${item.thumb}" alt="Data">
-            <h3>${item.label}</h3>
-            <button class="btn-launch" onclick="launchModule('${item.source}', '${item.label}')">Initialize Module</button>
-        `;
-        
-        container.appendChild(card);
-    });
-});
-
-// These functions must be OUTSIDE the DOMContentLoaded block so the buttons can find them
-function launchModule(url, name) {
-    const overlay = document.getElementById('player-overlay');
-    const frame = document.getElementById('game-frame');
-    const titleDisplay = document.getElementById('module-title');
-    
-    frame.src = url;
-    titleDisplay.innerText = "Active Session: " + name;
-    overlay.style.display = "block";
-}
-
-function closeModule() {
-    const overlay = document.getElementById('player-overlay');
-    const frame = document.getElementById('game-frame');
-    
-    overlay.style.display = "none";
-    frame.src = ""; 
-}
+const modules = [
+    {
+        label: "Logic Branch 2048 (Standard)",
+        thumb: "https://via.placeholder.com/250x150?text=Module+2048+S",
+        source: "https://gabrielecirulli.github.io/2048/"
+    },
+    {
+        label: "Logic Branch 2048 (Custom)",
+        thumb: "https://via.placeholder.com/250x150?text=Module+2048+C",
+        source: "https://0x0800.github.io/2048-cupcakes/" // Cupcake version
+    },
+    {
+        label: "Logic Branch SNAKE",
+        thumb: "https://via.placeholder.com/250x150?text=Module+SNAKE",
+        source: "https://thesnakegame.github.io/"
+    },
+    {
+        label: "Logic Branch TETRIS",
+        thumb: "https://via.placeholder.com/250x150?text=Module+TETRIS",
+        source: "https://chvin.github.io/react-tetris/"
+    },
+    {
+        label: "Logic Branch BIRD",
+        thumb: "https://via.placeholder.com/250x150?text=Module+BIRD",
+        source: "https://nebez.github.io/floppybird/"
+    },
+    {
+        label: "Logic Branch MINES",
+        thumb: "https://via.placeholder.com/250x150?text=Module+MINES",
+        source: "https://proxx.app/"
+    },
+    {
+        label: "Logic Branch PAC",
+        thumb: "https://via.placeholder.com/250x150?text=Module+PAC",
+        source: "https://pacman-canvas.github.io/"
+    }
+];
