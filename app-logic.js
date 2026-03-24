@@ -2,14 +2,16 @@ document.addEventListener('DOMContentLoaded', () => {
     // THE LIST OF MODULES
     const modules = [
         {
-            label: "Logic Branch 2048 (S)",
+            label: "Logic Branch 2048 (Standard)",
             thumb: "https://cdn-icons-png.flaticon.com/512/3593/3593461.png",
-            source: "https://gabrielecirulli.github.io/2048/"
+            // Mirror link for 2048 that allows iframes
+            source: "https://hczhcz.github.io/2048/" 
         },
         {
-            label: "Logic Branch 2048 (C)",
+            label: "Logic Branch 2048 (Cupcake)",
             thumb: "https://cdn-icons-png.flaticon.com/512/2721/2721620.png",
-            source: "https://0x0800.github.io/2048-cupcakes/"
+            // Fixed Cupcake link
+            source: "https://henry7720.github.io/2048-cupcakes/"
         },
         {
             label: "Logic Branch SNAKE",
@@ -24,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
         {
             label: "Logic Branch BIRD",
             thumb: "https://cdn-icons-png.flaticon.com/512/2721/2721620.png",
-            source: "https://nebez.github.io/floppybird/"
+            source: "https://nolanjp.github.io/flappybird-web/"
         },
         {
             label: "Logic Branch MINES",
@@ -34,34 +36,46 @@ document.addEventListener('DOMContentLoaded', () => {
         {
             label: "Logic Branch PAC",
             thumb: "https://cdn-icons-png.flaticon.com/512/3593/3593461.png",
-            source: "https://pacman-canvas.github.io/"
+            // Fixed Pac-Man link (explicitly supports iframes)
+            source: "https://nicerwritter27.github.io/web-pacman/"
+        },
+        {
+            label: "Logic Branch CHESS",
+            thumb: "https://cdn-icons-png.flaticon.com/512/2721/2721620.png",
+            source: "https://zeyu-li.github.io/chess/"
+        },
+        {
+            label: "Logic Branch BREAK",
+            thumb: "https://cdn-icons-png.flaticon.com/512/1150/1150626.png",
+            source: "https://jakesgordon.github.io/javascript-breakout/"
+        },
+        {
+            label: "Logic Branch SUDOKU",
+            thumb: "https://cdn-icons-png.flaticon.com/512/3593/3593461.png",
+            source: "https://games.idm.tokyo/sudoku/"
+        },
+        {
+            label: "Logic Branch SLOPE",
+            thumb: "https://cdn-icons-png.flaticon.com/512/2721/2721620.png",
+            source: "https://cookiedude.github.io/slope/"
         }
     ];
 
     const container = document.getElementById('logic-container');
+    if (!container) return;
 
-    // Check if the container exists before trying to add cards
-    if (!container) {
-        console.error("Could not find logic-container in HTML");
-        return;
-    }
-
-    // This loop creates the cards on your screen
     modules.forEach(item => {
         const card = document.createElement('div');
         card.className = 'data-module-card';
-        
         card.innerHTML = `
             <img src="${item.thumb}" alt="Data Module">
             <h3>${item.label}</h3>
             <button class="btn-launch" onclick="launchModule('${item.source}', '${item.label}')">Initialize Module</button>
         `;
-        
         container.appendChild(card);
     });
 });
 
-// FUNCTIONS TO OPEN AND CLOSE THE PLAYER
 function launchModule(url, name) {
     const overlay = document.getElementById('player-overlay');
     const frame = document.getElementById('game-frame');
@@ -70,6 +84,7 @@ function launchModule(url, name) {
     frame.src = url;
     titleDisplay.innerText = "Active Session: " + name;
     overlay.style.display = "block";
+    document.body.style.overflow = "hidden";
 }
 
 function closeModule() {
@@ -78,4 +93,5 @@ function closeModule() {
     
     overlay.style.display = "none";
     frame.src = ""; 
+    document.body.style.overflow = "auto";
 }
