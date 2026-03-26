@@ -3,28 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Research Project - Logic Labs</title>
+    <title>Documentation | JS-Logic Framework</title>
     <link rel="stylesheet" href="system-styles.css">
-    <style>
-        /* This ensures the player is hidden immediately if the CSS file fails to load */
-        #player-overlay { display: none; }
-    </style>
 </head>
 <body>
-    <header id="main-header">
-        <h1>Resource Repository: JavaScript Logic Frameworks</h1>
-        <p>Documentation for interactive rendering modules.</p>
-    </header>
+    <div class="app-container">
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+            <div class="logo">JS-Logic <span>v4.2</span></div>
+            <nav>
+                <p class="nav-label">Documentation</p>
+                <ul>
+                    <li><a href="#" onclick="showArticle('intro')">Introduction</a></li>
+                    <li><a href="#" onclick="showArticle('api')">API Endpoints</a></li>
+                    <li><a href="#" onclick="showArticle('rendering')">Canvas Rendering</a></li>
+                </ul>
+                <p class="nav-label">Developer Tools</p>
+                <ul>
+                    <li><a href="#" class="special-link" onclick="showEditor()">💻 Script Editor</a></li>
+                </ul>
+            </nav>
+        </aside>
 
-    <main id="logic-container">
-        <!-- Game cards will load here via JavaScript -->
-    </main>
+        <!-- MAIN CONTENT -->
+        <main class="content-area">
+            <!-- Article Section -->
+            <section id="article-view">
+                <div id="article-content">
+                    <!-- Default Article -->
+                    <h1>Introduction to JS-Logic</h1>
+                    <p>The JS-Logic framework is designed for high-performance data processing and visualization. It utilizes a modular approach to handle complex calculations in the browser environment.</p>
+                    <p>Use the sidebar to navigate through the technical specifications or use the Script Editor to test custom rendering logic.</p>
+                </div>
+            </section>
 
-    <!-- THE PLAYER OVERLAY -->
+            <!-- Script Editor Section (Hidden by default) -->
+            <section id="editor-view" style="display: none;">
+                <div class="editor-header">
+                    <span>File Explorer: project_root/src/logic/</span>
+                </div>
+                <div class="editor-layout">
+                    <div class="file-list" id="editor-files">
+                        <!-- Game list will load here as "scripts" -->
+                    </div>
+                    <div class="code-pane">
+                        <div class="code-header">
+                            <span id="current-filename">Select a file...</span>
+                            <button id="test-btn" class="test-btn" style="display: none;">▶ Run Test</button>
+                        </div>
+                        <pre id="code-display">// Select a script from the left to view the logic modules.</pre>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- GAME OVERLAY (Your existing player) -->
     <div id="player-overlay">
         <div class="player-controls">
-            <button onclick="closeModule()">✖ Close Module</button>
-            <span id="module-title">Testing Module</span>
+            <button onclick="closeModule()">✖ Stop Process</button>
+            <span id="module-title">Active Test Session</span>
         </div>
         <iframe id="game-frame" src="" frameborder="0"></iframe>
     </div>
