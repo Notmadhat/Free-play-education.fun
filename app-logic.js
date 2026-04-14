@@ -68,3 +68,15 @@ function closeModule() {
     document.getElementById('game-frame').src = ""; 
     document.body.style.overflow = "auto";
 }
+const scripts = [
+    { 
+        name: "data_processor_s.js", 
+        source: "./modules/article-s.html", 
+        fakeCode: "// Module S-Logic\n// Initializing stream...\nfunction process() { return null; }" 
+    },
+    { 
+        name: "logic_engine_v2.js", 
+        source: "./modules/article-2.html", 
+        fakeCode: "// Logic V2 Core\n// Buffer size: 1024\n// Syncing threads..." 
+    }
+];
