@@ -1,1 +1,36 @@
-
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Latency Tester</title>
+    <style>
+        body { background: #0d1117; color: #c9d1d9; font-family: sans-serif; text-align: center; padding-top: 50px; }
+        #target { width: 100px; height: 100px; background: #2ea44f; border-radius: 50%; position: absolute; cursor: pointer; display: none; }
+        .gate { border: 1px solid #30363d; padding: 20px; display: inline-block; }
+    </style>
+</head>
+<body>
+    <div class="gate">
+        <h3>Network Latency Simulation</h3>
+        <p>Click the green node to measure packet response time.</p>
+        <p>Avg Latency: <span id="avg">0</span>ms</p>
+        <button onclick="start()">Start Test</button>
+    </div>
+    <div id="target"></div>
+    <script>
+        let startT; let times = [];
+        const target = document.getElementById('target');
+        function start() { target.style.display = 'block'; move(); }
+        function move() {
+            startT = Date.now();
+            target.style.top = Math.random() * (window.innerHeight - 150) + 100 + "px";
+            target.style.left = Math.random() * (window.innerWidth - 100) + "px";
+        }
+        target.onclick = () => {
+            let diff = Date.now() - startT;
+            times.push(diff);
+            document.getElementById('avg').innerText = Math.floor(times.reduce((a,b)=>a+b)/times.length);
+            move();
+        };
+    </script>
+</body>
+</html>
