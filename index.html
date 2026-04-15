@@ -1,89 +1,59 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Documentation | JS-Logic Framework</title>
+    <title>Documentation | JS-Logic</title>
     <link rel="stylesheet" href="system-styles.css">
 </head>
 <body>
 
-    <div class="app-container">
+    <div style="display: flex; height: 100vh; font-family: sans-serif;">
         <!-- SIDEBAR -->
-        <aside class="sidebar">
-            <div class="logo">JS-Logic <span>v4.2.0</span></div>
+        <aside style="width: 250px; background: #161b22; color: white; padding: 20px;">
+            <h2>JS-Logic</h2>
             <nav>
-                <p class="nav-label">Documentation</p>
-                <ul>
-                    <li><a href="javascript:void(0)" onclick="showArticle('intro')">Introduction</a></li>
-                    <li><a href="javascript:void(0)" onclick="showArticle('api')">API Endpoints</a></li>
-                    <li><a href="javascript:void(0)" onclick="showArticle('rendering')">Canvas Rendering</a></li>
-                </ul>
-                <p class="nav-label">Developer Tools</p>
-                <ul>
-                    <!-- THE HIDDEN ENTRANCE -->
-                    <li><a href="javascript:void(0)" class="special-link" onclick="showEditor()">💻 Script Editor</a></li>
-                </ul>
+                <p style="color: grey; font-size: 12px;">DOCS</p>
+                <a href="javascript:void(0)" onclick="showArticle('intro')" style="color: white; display: block; padding: 10px 0;">Introduction</a>
+                <a href="javascript:void(0)" onclick="showArticle('api')" style="color: white; display: block; padding: 10px 0;">API Endpoints</a>
+                
+                <p style="color: grey; font-size: 12px; margin-top: 20px;">TOOLS</p>
+                <a href="javascript:void(0)" onclick="showEditor()" style="color: #58a6ff; display: block; font-weight: bold;">💻 Script Editor</a>
             </nav>
-            <div class="sidebar-footer">
-                Status: <span style="color: #2ea44f;">● Connected</span>
-            </div>
         </aside>
 
-        <!-- MAIN CONTENT AREA -->
-        <main class="content-area">
+        <!-- CONTENT -->
+        <main style="flex: 1; padding: 40px; background: #0d1117; color: white;">
             
-            <!-- SECTION 1: ARTICLES (Boring text) -->
             <section id="article-view">
                 <div id="article-content">
-                    <h1>Introduction to JS-Logic</h1>
-                    <p>The JS-Logic framework is an open-source library designed for high-performance data processing and modular JavaScript execution.</p>
-                    <p>By utilizing a virtualized logic-gate approach, developers can simulate complex environments directly within the browser's V8 engine without external overhead.</p>
-                    <p>Navigate through the technical documentation using the sidebar, or access the <strong>Script Editor</strong> to run live testing modules on the current rendering buffer.</p>
+                    <h1>Introduction</h1>
+                    <p>Select a topic from the sidebar.</p>
                 </div>
             </section>
 
-            <!-- SECTION 2: SCRIPT EDITOR (The Game Hub) -->
             <section id="editor-view" style="display: none;">
-                <div class="editor-header-bar">
-                    <span>File Explorer: project_root / src / testing / logic_modules</span>
-                </div>
-                
-                <div class="editor-layout">
-                    <!-- File Selection Column -->
-                    <div class="file-list" id="editor-files">
-                        <!-- JS-Logic.js will inject names like 'snake_control.js' here -->
-                    </div>
-
-                    <!-- Code Display Column -->
-                    <div class="code-pane">
-                        <div class="code-header">
-                            <span id="current-filename">Select a file to view source...</span>
-                            <!-- THE "TEST" BUTTON -->
-                            <button id="test-btn" class="test-btn" style="display: none;">▶ Run Test</button>
+                <div style="display: flex; border: 1px solid #333; height: 400px;">
+                    <div id="editor-files" style="width: 200px; border-right: 1px solid #333; background: #010409;"></div>
+                    <div style="flex: 1; display: flex; flex-direction: column;">
+                        <div style="padding: 10px; background: #161b22; display: flex; justify-content: space-between;">
+                            <span id="current-filename">Select a file...</span>
+                            <button id="test-btn" style="display: none; background: #2ea44f; color: white; border: none; padding: 5px 10px; cursor: pointer;">▶ Run Test</button>
                         </div>
-                        <pre id="code-display">// JS-Logic Framework Code Viewer
-// Please select a module from the file explorer to begin testing.</pre>
+                        <pre id="code-display" style="padding: 20px; color: #79c0ff;">// Source will appear here</pre>
                     </div>
                 </div>
             </section>
         </main>
     </div>
 
-    <!-- SECTION 3: THE PLAYER OVERLAY (The actual game window) -->
-    <div id="player-overlay">
-        <div class="player-controls">
-            <div class="control-info">
-                <span class="status-dot"></span>
-                <span id="module-title">Active Test Session</span>
-            </div>
-            <button class="close-btn" onclick="closeModule()">✖ Stop Process</button>
+    <!-- PLAYER -->
+    <div id="player-overlay" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: black; z-index: 9999;">
+        <div style="background: #161b22; padding: 10px; color: white;">
+            <button onclick="closeModule()" style="background: #d73a49; color: white; border: none; padding: 5px 10px; cursor: pointer;">✖ Close</button>
         </div>
-        <iframe id="game-frame" src="" frameborder="0"></iframe>
+        <iframe id="game-frame" style="width: 100%; height: calc(100% - 45px); border: none;"></iframe>
     </div>
 
-    <!-- LINK TO YOUR JAVASCRIPT -->
     <script src="app-logic.js"></script>
-
 </body>
 </html>
