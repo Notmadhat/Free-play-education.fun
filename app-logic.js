@@ -1,36 +1,34 @@
-// --- 1. GLOBAL VARIABLES ---
-let activeSource = "";
-
+// --- 1. THE DATA ---
 const scripts = [
     { 
         name: "snake_control.js", 
         source: "./modules/article-s.html", 
-        fakeCode: "// System Snake Logic\nfunction update() { render(); }" 
+        fakeCode: "// Snake Logic\nfunction init() { console.log('ready'); }" 
     },
     { 
-        name: "data_aggregator.js", 
+        name: "logic_engine_v2.js", 
         source: "./modules/article-2.html", 
-        fakeCode: "// 2048 Math Module\nconst merge = (a, b) => a + b;" 
-    },
-    { 
-        name: "network_latency.js", 
-        source: "./modules/article-r.html", 
-        fakeCode: "// Packet Response Test\nlet ping = Date.now();" 
+        fakeCode: "// 2048 Core\nconst buffer = new Array(16).fill(0);" 
     }
 ];
 
-// --- 2. NAVIGATION FUNCTIONS (MUST BE GLOBAL) ---
+// --- 2. THE FUNCTIONS ---
+// We use window. so the HTML buttons can ALWAYS find them
 window.showArticle = function(key) {
-    const articles = {
-        intro: "<h1>Introduction</h1><p>Welcome to the JS-Logic Documentation. This system handles high-speed logic processing.</p>",
-        api: "<h1>API Endpoints</h1><p>GET /api/v1/render - Fetches primary rendering buffer.</p>"
-    };
+    console.log("Showing article: " + key);
     document.getElementById('editor-view').style.display = 'none';
     document.getElementById('article-view').style.display = 'block';
-    document.getElementById('article-content').innerHTML = articles[key] || "Article not found.";
+    
+    const content = document.getElementById('article-content');
+    if(key === 'intro') {
+        content.innerHTML = "<h1>Introduction</h1><p>Technical documentation for JS-Logic.</p>";
+    } else {
+        content.innerHTML = "<h1>API Endpoints</h1><p>Technical specifications for rendering.</p>";
+    }
 };
 
 window.showEditor = function() {
+    console.log("Opening Editor");
     document.getElementById('article-view').style.display = 'none';
     document.getElementById('editor-view').style.display = 'block';
 };
@@ -38,40 +36,38 @@ window.showEditor = function() {
 window.closeModule = function() {
     document.getElementById('player-overlay').style.display = "none";
     document.getElementById('game-frame').src = "";
-    document.body.style.overflow = "auto";
 };
 
-// --- 3. INITIALIZATION ---
+// --- 3. THE LOAD LOGIC ---
 document.addEventListener('DOMContentLoaded', () => {
+    console.log("Page Loaded - Initializing Sidebar");
     const fileList = document.getElementById('editor-files');
+    const display = document.getElementById('code-display');
+    const fileName = document.getElementById('current-filename');
     const testBtn = document.getElementById('test-btn');
+    const frame = document.getElementById('game-frame');
+    const overlay = document.getElementById('player-overlay');
 
-    if (fileList) {
-        scripts.forEach((s) => {
-            const div = document.createElement('div');
-            div.className = "file-item"; // Make sure this class is in your CSS
-            div.style.padding = "8px";
-            div.style.cursor = "pointer";
-            div.innerText = '📄 ' + s.name;
+    scripts.forEach((s) => {
+        const div = document.createElement('div');
+        div.style.padding = "10px";
+        div.style.borderBottom = "1px solid #333";
+        div.style.cursor = "pointer";
+        div.innerText = "📄 " + s.name;
+        
+        div.onclick = () => {
+            console.log("Selected script: " + s.name);
+            fileName.innerText = s.name;
+            display.innerText = s.fakeCode;
+            testBtn.style.display = "block";
             
-            div.onclick = () => {
-                document.getElementById('current-filename').innerText = s.name;
-                document.getElementById('code-display').innerText = s.fakeCode;
-                testBtn.style.display = 'block';
-                activeSource = s.source;
+            // Set the button to launch this specific game
+            testBtn.onclick = () => {
+                console.log("Launching: " + s.source);
+                frame.src = s.source;
+                overlay.style.display = "block";
             };
-            fileList.appendChild(div);
-        });
-    }
-
-    if (testBtn) {
-        testBtn.onclick = () => {
-            if (activeSource !== "") {
-                document.getElementById('game-frame').src = activeSource;
-                document.getElementById('module-title').innerText = "Testing: " + activeSource;
-                document.getElementById('player-overlay').style.display = "block";
-                document.body.style.overflow = "hidden";
-            }
         };
-    }
+        fileList.appendChild(div);
+    });
 });
